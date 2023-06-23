@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const Popup = ({ data, i, setClick, id }) => {
-  const [jokes, setJokes] = useState();
+  const [jokes, setJokes] = useState([{}]);
   const [count, setCount] = useState(0);
 
-  // id.map((e)=>{
-  // setUnique(e)
-  // })
+ 
 
   const getData = async () => {
     let res = await fetch(
@@ -19,8 +17,10 @@ const Popup = ({ data, i, setClick, id }) => {
     getData();
   }, []);
 
-  const handleClick = async () => {
-    setCount(count + 1);
+  const handleClick =  () => {
+   if (count <= jokes.length - 2) {
+      setCount(count + 1);
+    }
 
     console.log(jokes[count].value);
   };
